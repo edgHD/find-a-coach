@@ -1,7 +1,9 @@
 <template>
-    <TheNavbar />
-    <RouterView />
-    <TheFooter />
+    <div>
+        <TheNavbar />
+        <RouterView />
+        <TheFooter />
+    </div>
 </template>
 
 <script>
@@ -17,5 +19,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+div {
+    display: grid;
+    height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+}
 </style>
