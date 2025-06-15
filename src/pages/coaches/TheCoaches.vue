@@ -1,11 +1,15 @@
 <template>
     <div class="container">
-    <section>
-        FILTER
-    </section>
-    <section>
-        LIST OF COACHES
-    </section>
+        <section>
+            FILTER
+        </section>
+        <section>
+            <div class="controls">
+                <button class="refresh">Refresh</button>
+                <button class="register-coach" @click="$routerLinkStore.routeTo('register')">Register as Coach</button>
+            </div>
+            <ul>LIST OF COACHES</ul>
+        </section>
     </div>
 </template>
 <script></script>
@@ -20,4 +24,3 @@
     height: auto !important;
 }
 </style>
-

@@ -2,20 +2,13 @@
     <nav>
         <h1>Find a Coach</h1>
         <ul>
-            <li><button @click="routeTo('coaches')">Coaches</button></li>
-            <li><button @click="routeTo('requests')">Requests</button></li>
+            <li><button @click="$routerLinkStore.routeTo('coaches')">Coaches</button></li>
+            <li><button @click="$routerLinkStore.routeTo('requests')">Requests</button></li>
         </ul>
     </nav>
 </template>
 
 <script>
-export default {
-    methods: {
-        routeTo(page) {
-            this.$router.push(`/${page}`);
-        }
-    }
-}
 </script>
 
 <style scoped>
