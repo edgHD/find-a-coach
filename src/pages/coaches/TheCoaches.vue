@@ -9,7 +9,8 @@
                 <button class="register-coach" @click="$routerLinkStore.routeTo('register')">Register as Coach</button>
             </div>
             <ul v-if="hasCoaches" class="coaches-list">
-                <li v-for="coach in coachesStore.coaches" :key="coach.id"> {{ coach.firstName }}</li>
+                <CoachItem v-for="coach in coachesList" :key="coach.id" :id="coach.id" :firstName="coach.firstName"
+                    :lastName="coach.lastName" :areas="coach.areas" :rate="coach.hourlyRate" />
             </ul>
             <p v-else>No coaches found.</p>
         </section>
@@ -18,10 +19,17 @@
 <script>
 import { mapStores } from 'pinia';
 import { useCoachesStore } from '@/stores/coachesStore';
+import CoachItem from '@/components/coaches/CoachItem.vue';
 
 export default {
+    components: {
+        CoachItem,
+    },
     computed: {
         ...mapStores(useCoachesStore),
+        coachesList() {
+            return this.coachesStore.coachesList;
+        },
         hasCoaches() {
             return this.coachesStore.hasCoaches;
         },
@@ -45,15 +53,5 @@ export default {
     padding: 0;
     margin: 0;
     width: 100%;
-
-    & li {
-        padding: 0.5rem;
-        border-bottom: 1px solid #ccc;
-        user-select: none;
-
-        &:hover {
-            background-color: #f0f0f0;
-        }
-    }
 }
 </style>
