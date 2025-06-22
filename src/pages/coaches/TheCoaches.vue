@@ -1,19 +1,23 @@
 <template>
     <div class="container">
         <section>
-            FILTER
+            <h1>FILTER</h1>
         </section>
-        <section>
-            <div class="controls">
-                <button class="refresh">Refresh</button>
-                <button class="register-coach" @click="$routerLinkStore.routeTo('register')">Register as Coach</button>
-            </div>
-            <ul v-if="hasCoaches" class="coaches-list">
-                <CoachItem v-for="coach in coachesList" :key="coach.id" :id="coach.id" :firstName="coach.firstName"
-                    :lastName="coach.lastName" :areas="coach.areas" :rate="coach.hourlyRate" />
-            </ul>
-            <p v-else>No coaches found.</p>
-        </section>
+        <base-card>
+            <section>
+                <div class="controls">
+                    <base-button mode="outline">Refresh</base-button>
+                    <base-button @click="$routerLinkStore.routeTo('register')">Register as
+                        Coach
+                    </base-button>
+                </div>
+                <ul v-if="hasCoaches" class="coaches-list">
+                    <CoachItem v-for="coach in coachesList" :key="coach.id" :id="coach.id" :firstName="coach.firstName"
+                        :lastName="coach.lastName" :areas="coach.areas" :rate="coach.hourlyRate" />
+                </ul>
+                <p v-else>No coaches found.</p>
+            </section>
+        </base-card>
     </div>
 </template>
 <script>
@@ -53,5 +57,11 @@ export default {
     padding: 0;
     margin: 0;
     width: 100%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 </style>
